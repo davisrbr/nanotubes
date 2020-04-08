@@ -20,8 +20,8 @@ def chiralAngle(chiralIndices : NamedTuple) -> float:
     return np.arctan(np.sqrt(3)*chiralIndices.m /
                      (2*chiralIndices.n + chiralIndices.m))
 
-def diameter(chiralIndices : NamedTuple) -> float:
-    return BASIS_A0/np.pi * np.sqrt(chiralIndices.n**2
+def diameter(chiralIndices : NamedTuple, scale : float) -> float:
+    return BASIS_A0*scale/np.pi * np.sqrt(chiralIndices.n**2
                                     + chiralIndices.m**2
                                     + chiralIndices.n*chiralIndices.m)
 
@@ -74,7 +74,7 @@ def diffract_plot(chiral_n : int, chiral_m : int,
     indices = chiralIndices(chiral_n  , chiral_m)
 
     # diameter of carbon nanotube
-    d       = diameter(indices) 
+    d       = diameter(indices, scale) 
 
     # chiral angle of carbon nanotube
     angle   = chiralAngle(indices) 
@@ -84,9 +84,9 @@ def diffract_plot(chiral_n : int, chiral_m : int,
     D2      = spacingD2(angle, scale)
     D1      = spacingD1(angle, scale)
 
-    diffraction_distance = D1*600/500
+    diffraction_distance = scale*BASIS_A0 # add space to layer lines
 
-    R = np.linspace(-d*4, d*4, 1000) #nm
+    R = np.linspace(-d, d, 1000) #nm
     radius_spacing = 2*np.pi*R
     diffraction_spacing = np.linspace(-diffraction_distance, 
                                     diffraction_distance, 600)
@@ -156,11 +156,6 @@ def diffract_plot(chiral_n : int, chiral_m : int,
             total_mesh = np.log10(total_mesh)
             total_mesh[isneginf(total_mesh)]=0
 
-    # plt.xticks([])
-    # plt.yticks([])
-    # plt.title(f'Chiral indices: [{indices.n},{indices.m}]      Diameter: {round(d, 3)}   Helicity: {round(angle*180/np.pi, 3)} degrees')
-    # plt.pcolormesh(radius_spacing, diffraction_spacing, total_mesh,cmap='Blues')
-    # plt.show()
     X,Y = np.meshgrid(radius_spacing, diffraction_spacing)
     return X, Y, total_mesh
 

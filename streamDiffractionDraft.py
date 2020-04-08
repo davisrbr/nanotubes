@@ -31,25 +31,14 @@ chiral_m = st.number_input("Chiral indice m", 0, 35, 2, 1)
 indices  = chiralIndices(chiral_n, chiral_m)
 
 
-radius_spacing, diffraction_spacing, total_mesh = diffract_plot(indices.n, indices.m, scale, option)
-# source = pd.DataFrame({'x': x.ravel(),
-#                      'y': y.ravel(),
-#                      'z': z.ravel()})
-
-# alt.data_transformers.disable_max_rows()
-# c = alt.Chart(source).mark_rect().encode(
-#     x=alt.X('x:O', axis=alt.Axis(labels=False)),
-#     y=alt.Y('y:O',axis=alt.Axis(labels=False)), 
-#     color=alt.Color('z:Q',legend=None)
-# )
-
-# st.altair_chart(c)
-plt.xticks([])
-plt.yticks([])
-plt.title(f'Chiral indices: [{indices.n},{indices.m}]      Diameter: {round(diameter(indices), 3)}   Helicity: {round(chiralAngle(indices)*180/np.pi, 3)} degrees')
-plt.pcolormesh(radius_spacing, diffraction_spacing, total_mesh,cmap='Blues')
-plt.show()
-st.pyplot()
+with st.spinner(text='Plotting new chiral indices'):
+    radius_spacing, diffraction_spacing, total_mesh = diffract_plot(indices.n, indices.m, scale, option)
+    plt.xticks([])
+    plt.yticks([])
+    plt.title(f'Chiral indices: [{indices.n},{indices.m}]      Diameter: {round(diameter(indices, scale), 3)}   Helicity: {round(chiralAngle(indices)*180/np.pi, 3)} degrees')
+    plt.pcolormesh(radius_spacing, diffraction_spacing, total_mesh,cmap='Blues')
+    plt.show()
+    st.pyplot()
 
 # scale = st.slider("Scale as fraction of 0.246 nm", 0.1, 10.0, 1.0, 0.1)
 # st.slider(l"Scale", min_value=None, max_value=None, value=None, step=None, format=None, key=None)
