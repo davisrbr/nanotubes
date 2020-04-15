@@ -32,8 +32,8 @@ indices  = chiralIndices(chiral_n, chiral_m)
 with st.spinner(text='Plotting new chiral indices'):
                                                                                         #num_layer_lines here
     radius_spacing, diffraction_spacing, total_mesh = diffract_plot(indices.n, indices.m, 3, scale, option)
-    # plt.xticks([])
-    # plt.yticks([])
+    plt.xticks([])
+    plt.yticks([])
     plt.title(f'Chiral indices: [{indices.n},{indices.m}]      Diameter: {round(diameter(indices), 3)}   Helicity: {round(chiralAngle(indices)*180/np.pi, 3)} degrees')
     plt.pcolormesh(radius_spacing, diffraction_spacing, total_mesh,cmap='Blues')
     plt.show()
