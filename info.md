@@ -5,6 +5,8 @@ This app displays the simulated electron diffraction pattern of carbon nanotubes
 
 See the sidebar to control the diffraction intensity (logarithmic vs linear) and the scaling of the plot (defaults to 2.46 nm).
 
+To save an image, right click and save (on Desktop) or press and hold (on mobile).
+
 💻 The code is available [here](https://github.com/davisrbr/CNT_general).
 
 </details>

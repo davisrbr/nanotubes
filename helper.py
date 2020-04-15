@@ -103,7 +103,6 @@ def diffract_plot(chiral_n : int, chiral_m : int, num_layer_lines : int,
         # assumed layer line spacing based on 600 grid spaced Y-axis
         pos_position_slice = int(np.floor(500*position/diffraction_distance+500))
         neg_position_slice = -int(np.floor(500*position/diffraction_distance-500))
-        print(pos_position_slice)
 
         # if not, scale is too 'zoomed in' to appear on plot, do nothing to mesh
         if pos_position_slice+2 <=1000:
