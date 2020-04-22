@@ -83,11 +83,12 @@ def diffract_plot(chiral_n : int, chiral_m : int, num_layer_lines : int,
 
     # diffraction_distance =  scale*BASIS_A0 #np.pi*d*scale
     # diffraction_distance = (radius_spacing[1]-radius_spacing[0])
-    diffraction_distance = np.pi*d*scale/70
+    diffraction_distance = np.pi*d*scale/138
 
 
 
     mesh_layers : Dict[int, Tuple[Callable, float]] = {
+                                        0 : (l0_mesh, 0.0             ),
                                         1 : (l1_mesh, spacingD1(angle)),
                                         2 : (l2_mesh, spacingD2(angle)),
                                         3 : (l3_mesh, spacingD3(angle)),

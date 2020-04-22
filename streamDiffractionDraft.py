@@ -22,6 +22,8 @@ option = st.sidebar.selectbox('Logarithmic or linear diffraction intensity?', ('
 st.sidebar.markdown("---")
 st.sidebar.markdown("② ** Size scale of plot **")
 scale = st.sidebar.slider("Scale as fraction of 0.246 nm", 0.1, 50.0, 10.0, 0.1)
+# st.sidebar.markdown("③ ** Include center layer line (l0) **")
+# lines = st.sidebar.multiselect('Select layer lines', ('l0', 'Yes'))
 
 
 chiral_n = st.number_input("Chiral indice n", 0, 35, 17, 1)
