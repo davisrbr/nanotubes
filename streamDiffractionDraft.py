@@ -27,8 +27,8 @@ st.sidebar.markdown("③ ** Include center layer line (l₀) **")
 lines = st.sidebar.selectbox('Include center layer line', ('No', 'Yes'))
 
 
-chiral_n = st.number_input("Chiral indice n", 0, 24, 4, 1)
-chiral_m = st.number_input("Chiral indice m", 0, 24, 20, 1)
+chiral_n = st.number_input("Chiral indice n", 0, 24, 20, 1)
+chiral_m = st.number_input("Chiral indice m", 0, 24, 3, 1)
 indices  = chiralIndices(chiral_n, chiral_m)
 
 with st.spinner(text='Plotting new chiral indices'):
