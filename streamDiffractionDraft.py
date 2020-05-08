@@ -24,7 +24,7 @@ st.sidebar.markdown("② ** Size scale of plot **")
 scale = st.sidebar.slider("Scale as fraction of 0.246 nm", 0.1, 50.0, 10.0, 0.1)
 st.sidebar.markdown("---")
 st.sidebar.markdown("③ ** Include center layer line (l₀) **")
-lines = st.sidebar.selectbox('Include center layer line', ('No', 'Yes'))
+lines = st.sidebar.selectbox('Include center layer line', ('Yes', 'No'))
 
 
 chiral_n = st.number_input("Chiral indice n", 0, 24, 20, 1)

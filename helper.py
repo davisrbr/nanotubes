@@ -96,8 +96,10 @@ def diffract_plot(chiral_n : int, chiral_m : int, num_layer_lines : int,
     total_mesh = np.zeros((1000, 1000))
 
     #to include center layer line
-    index_layers = lines == 'No'
+    # index_layers = lines == 'No'
+    index_layers = 1
     
+    max = 0.0
     for i in range(index_layers, num_layer_lines+1):
         
         # Tuple[mesh_function, spacing in nm]
@@ -111,6 +113,9 @@ def diffract_plot(chiral_n : int, chiral_m : int, num_layer_lines : int,
         if pos_position_slice+2 <=1000:
             # define layer n_th line
             layer_line = layer_line_func(indices, radius_spacing)
+            test_max = np.max(layer_line)
+            if test_max > max:
+                max = test_max
 
             #define slices to mesh
             diff_spacing_pos = slice(pos_position_slice-3, 
@@ -120,6 +125,28 @@ def diffract_plot(chiral_n : int, chiral_m : int, num_layer_lines : int,
                                   neg_position_slice+3)
 
             total_mesh[diff_spacing_pos, :] = total_mesh[diff_spacing_neg, :] = layer_line
+
+    #include center lines
+    if lines == 'Yes':
+        layer_line_func, position = mesh_layers[0] 
+            
+        # assumed layer line spacing based on 600 grid spaced Y-axis
+        pos_position_slice = int(np.floor(500*position/diffraction_distance+500))
+        neg_position_slice = -int(np.floor(500*position/diffraction_distance-500))
+
+        # top hat function so intensity does not dominate
+        prop_layer_line = layer_line_func(indices, radius_spacing)
+        layer_line = np.piecewise(prop_layer_line, [prop_layer_line < max, prop_layer_line >= max], [lambda x: x, lambda x: max])
+
+        #define slices to mesh
+        diff_spacing_pos = slice(pos_position_slice-3, 
+                                    pos_position_slice+3)        
+
+        diff_spacing_neg = slice(neg_position_slice-3, 
+                                neg_position_slice+3)
+
+        total_mesh[diff_spacing_pos, :] = total_mesh[diff_spacing_neg, :] = layer_line
+
 
     # if logarithmic
     if option == 'Contrast':
