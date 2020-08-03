@@ -31,7 +31,7 @@ chiral_n = st.number_input("Chiral indice n", 0, 24, 20, 1)
 chiral_m = st.number_input("Chiral indice m", 0, 24, 3, 1)
 indices = chiralIndices(chiral_n, chiral_m)
 
-with st.spinner(text='Plotting new chiral indices'):
+with st.spinner(text='Plotting new state'):
     # get pre-calculated spacing factor, from eqn. (70) in Qin 2006.
     fact_dict = fact_dict_loader()
 
@@ -59,5 +59,12 @@ with st.spinner(text='Plotting new chiral indices'):
             radius_spacing, diffraction_spacing, total_mesh, cmap='Blues'
             )
     plt.axis('equal')
+    for spine in plt.gca().spines.values():
+        spine.set_visible(False)
+    plt.tick_params(
+            top='off', bottom='off', left='off',
+            right='off', labelleft='off', labelbottom='on'
+            )
+
     plt.show()
     st.pyplot()
