@@ -1,3 +1,4 @@
+'''File to test streamlit functionality'''
 from time import time
 
 import altair as alt
