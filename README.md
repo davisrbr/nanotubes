@@ -5,10 +5,10 @@ The chiral indices that define the structure of a carbon nanotube can be precise
 
 <div class="row">
   <div class="column">
-    <img src="media/basisvec.png" alt="basis vector" width="300">
+    <img src="media/basisvec.png" alt="basis vector" width="200">
   </div>
   <div class="column">
-    <img src="media/153.png" alt="diffraction pattern" width="400">
+    <img src="media/153.png" alt="diffraction pattern" width="300">
   </div>
 </div>
 
