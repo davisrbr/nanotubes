@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-from helper import diffract_plot, chiralIndices, chiralAngle, diameter, read_markdown_file, fact_dict_loader
+from helper import diffract_plot, chiralIndices, chiralAngle, \
+        diameter, read_markdown_file, fact_dict_loader
 
 # set page title
 st.title('Electron diffraction of carbon nanotube given chiral indices')
