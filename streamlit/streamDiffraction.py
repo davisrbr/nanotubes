@@ -7,7 +7,7 @@ from helper import diffract_plot, chiralIndices, chiralAngle, \
 # set page title
 st.title('Electron diffraction of carbon nanotube given chiral indices')
 
-intro_markdown = read_markdown_file("nanotubes/streamlit/info.md")
+intro_markdown = read_markdown_file("info.md")
 st.markdown(intro_markdown, unsafe_allow_html=True)
 st.markdown("---")
 
