@@ -7,7 +7,21 @@ from helper import diffract_plot, chiralIndices, chiralAngle, \
 # set page title
 st.title('Electron diffraction of carbon nanotube given chiral indices')
 
-intro_markdown = read_markdown_file("info.md")
+# intro_markdown = read_markdown_file("info.md")
+intro_markdown = '''
+<details>
+<summary>ℹ️ Info</summary>
+
+This app displays the simulated electron diffraction pattern of carbon nanotubes as defined by [Qin 2006.](https://research.physics.unc.edu/lcqin/www1/papers/2007-Qin-PCCP.pdf)
+
+See the sidebar to control the diffraction intensity (logarithmic vs linear) and the scaling of the plot (defaults to 2.46 nm).
+
+To save an image, right click and save (on Desktop) or press and hold (on mobile).
+
+💻 The code is available [here](https://github.com/davisrbr/CNT_general).
+
+</details>
+'''
 st.markdown(intro_markdown, unsafe_allow_html=True)
 st.markdown("---")
 
