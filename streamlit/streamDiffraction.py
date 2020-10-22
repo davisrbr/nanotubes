@@ -5,6 +5,11 @@ from helper import diffract_plot, chiralIndices, chiralAngle, \
         diameter, read_markdown_file, fact_dict_loader
 
 
+unc_svg = open("North_Carolina_Tar_Heels_logo.svg").read()
+PAGE_CONFIG = {"page_title": "Chiral Indices of CNTs",
+               "page_icon": unc_svg,
+               "layout": "centered"}  # compare w/ "wide"
+st.beta_set_page_config(**PAGE_CONFIG)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 # set page title
 st.title('Electron diffraction of carbon nanotube given chiral indices')
